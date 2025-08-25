@@ -460,7 +460,11 @@ function App() {
             <div className="lg:hidden order-1">
               {/* Name slides in first on mobile */}
               <motion.h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 flex overflow-hidden" initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
+<<<<<<< HEAD
                   {"RISHABH AGRAWAL".split("").map((char, index) => (
+=======
+                  {"Rishabh Agrawal".split("").map((char, index) => (
+>>>>>>> 78e991e85d6992e57a00603713ba09b7c5483801
                       <motion.span key={index} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 + index * 0.05 }}>
                           {char === " " ? "\u00A0" : char}
                       </motion.span>
@@ -549,7 +553,11 @@ function App() {
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-800 mb-3 italic">My Story</h3>
                   <motion.div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 1.5 }} style={{ transformOrigin: 'left' }} />
                 </div>
+<<<<<<< HEAD
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed">My story isn’t just about learning to code — it’s about learning to create. From breaking down complex problems to building seamless experiences, I thrive at the sweet spot between logic and creativity. Every project I take on is a step toward shaping a smarter, more connected digital world.</p>
+=======
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed">From scribbling on notebooks to crafting pixel-perfect interfaces. My journey is fueled by a passion for turning complex problems into beautiful, intuitive designs.</p>
+>>>>>>> 78e991e85d6992e57a00603713ba09b7c5483801
                 
                 {/* Enhanced story decorations */}
                 <motion.div className="absolute -bottom-2 -right-2 w-6 h-6 bg-yellow-400/20 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} />
@@ -570,7 +578,11 @@ function App() {
             <motion.div className="flex-1 flex flex-col order-4 lg:order-2">
               {/* Name slides in after photo - Hidden on mobile, shown on desktop */}
               <motion.h1 className="hidden lg:flex text-5xl font-bold text-gray-900 mb-2 overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}>
+<<<<<<< HEAD
                   {"RISHABH AGRAWAL".split("").map((char, index) => (
+=======
+                  {"Rishabh Agrawal".split("").map((char, index) => (
+>>>>>>> 78e991e85d6992e57a00603713ba09b7c5483801
                       <motion.span key={index} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.9 + index * 0.05 }}>
                           {char === " " ? "\u00A0" : char}
                       </motion.span>
@@ -663,7 +675,11 @@ function App() {
                   <motion.div className="absolute bottom-2 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 2.8 }} style={{ transformOrigin: 'left' }} />
                  </div>
                 <motion.ul className="space-y-3">
+<<<<<<< HEAD
                   {[{ icon: Lightbulb, title: "Full-Stack Development", description: "Building scalable, secure, and high-performance web apps.", color: "text-yellow-500" }, { icon: Rocket, title: "Blockchain & Cloud", description: "Hands-on with Solidity, Ethereum, AWS, and CI/CD pipelines.", color: "text-blue-500" }, { icon: Sparkles, title: "Innovation & Problem-Solving", description: "ransforming complex problems into simple, impactful solutions.", color: "text-red-500" }].map((strength, index) => (
+=======
+                  {[{ icon: Lightbulb, title: "Intuitive UI/UX", description: "Crafting user-centric and accessible interfaces.", color: "text-yellow-500" }, { icon: Rocket, title: "Dynamic Motion", description: "Bringing designs to life with meaningful animations.", color: "text-blue-500" }, { icon: Sparkles, title: "Polished Execution", description: "A keen eye for detail and pixel-perfect results.", color: "text-red-500" }].map((strength, index) => (
+>>>>>>> 78e991e85d6992e57a00603713ba09b7c5483801
                     <motion.li key={index} className="flex items-start gap-3" initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 3 + index * 0.1 }}><strength.icon size={22} className={`${strength.color} mt-1 flex-shrink-0`} /><div><h4 className="font-bold text-gray-800 text-base md:text-lg">{strength.title}</h4> <p className="text-sm md:text-base text-gray-600">{strength.description}</p></div></motion.li>
                   ))}
                 </motion.ul>
