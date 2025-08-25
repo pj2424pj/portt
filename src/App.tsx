@@ -40,7 +40,11 @@ import {
   AtSign,
   Percent,
   DollarSign,
-  Ampersand
+  Ampersand,
+  Database, // Added for MongoDB
+  Gem,      // Added for Solidity
+  Cloud,    // Added for AWS
+  Box       // Added for Docker
 } from 'lucide-react';
 
 // NEW: Reusable component for wavy text effect on hover
@@ -88,6 +92,19 @@ function App() {
 
   // Define sections for navigation and scroll tracking
   const sections = ['home', 'experience', 'education', 'skills', 'projects', 'contact'];
+
+  // Array for software skills with icons
+  const softwareSkills = [
+    { icon: Layers, full: "React", color: "bg-sky-500", level: "95%" },
+    { icon: Zap, full: "Next.js", color: "bg-gray-800", level: "90%" },
+    { icon: Code, full: "Node.js", color: "bg-green-600", level: "85%" },
+    { icon: Database, full: "MongoDB", color: "bg-green-800", level: "80%" },
+    { icon: Gem, full: "Solidity", color: "bg-gray-600", level: "85%" },
+    { icon: Cloud, full: "AWS", color: "bg-orange-500", level: "75%" },
+    { icon: Box, full: "Docker", color: "bg-blue-600", level: "80%" },
+    { icon: Figma, full: "Figma", color: "bg-purple-600", level: "90%" },
+    { full: "", color: "bg-gray-200/50", level: "0%" } // Placeholder
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -549,7 +566,7 @@ function App() {
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-800 mb-3 italic">My Story</h3>
                   <motion.div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 1.5 }} style={{ transformOrigin: 'left' }} />
                 </div>
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed">My story isn’t just about learning to code — it’s about learning to create. From breaking down complex problems to building seamless experiences, I thrive at the sweet spot between logic and creativity. Every project I take on is a step toward shaping a smarter, more connected digital world.</p>
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed">My story isn't just about learning to code — it's about learning to create. From breaking down complex problems to building seamless experiences, I thrive at the sweet spot between logic and creativity. Every project I take on is a step toward shaping a smarter, more connected digital world.</p>
                 
                 {/* Enhanced story decorations */}
                 <motion.div className="absolute -bottom-2 -right-2 w-6 h-6 bg-yellow-400/20 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} />
@@ -743,16 +760,66 @@ function App() {
               </motion.div>
             </motion.section>
 
+            {/* UPDATED Software Skills Section */}
             <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }}>
               <SectionHeader title="Software Skills">
                 <motion.svg className="absolute top-2 -right-10 w-16 h-12" viewBox="0 0 100 100" initial={{ opacity: 0, rotate: -180 }} whileInView={{ opacity: 1, rotate: 0 }} transition={{ delay: 0.5, duration: 0.8 }} viewport={{ once: true }}><motion.path d="M20 30 C 40 10, 60 60, 80 40 S 90 70, 70 80" stroke="#2dd4bf" strokeWidth="4" fill="transparent" initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} transition={{ duration: 2, ease: "easeInOut", delay: 0.8 }} viewport={{ once: true }} /></motion.svg>
               </SectionHeader>
               <motion.div className="grid grid-cols-3 gap-4" initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true }}>
-                {[{ name: "Ae", full: "After Effects", color: "bg-blue-900", level: "95%" }, { name: "Pr", full: "Premiere Pro", color: "bg-purple-900", level: "90%" }, { name: "Ps", full: "Photoshop", color: "bg-blue-600", level: "85%" }, { name: "Ai", full: "Illustrator", color: "bg-orange-600", level: "90%" }, { name: "Xd", full: "Adobe XD", color: "bg-pink-600", level: "80%" }, { name: "Figma", full: "Figma", color: "bg-gray-800", level: "95%", icon: true }, { name: "Dn", full: "Dimension", color: "bg-green-600", level: "70%" }, { name: "M", full: "Maya", color: "bg-teal-600", level: "65%" }, { name: "", full: "", color: "bg-gray-200/50", level: "0%" }].map((skill, index) => (
-                  <motion.div key={index} className={`${skill.color} text-white p-4 rounded-lg shadow-lg overflow-hidden ${skill.name ? 'cursor-pointer' : ''} relative`} initial={{ y: 50, opacity: 0, rotate: Math.random() * 20 - 10 }} whileInView={{ y: 0, opacity: 1, rotate: 0 }} transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 200 }} whileHover={skill.name ? { scale: 1.1, y: -10, rotate: Math.random() * 10 - 5, boxShadow: "0 15px 35px rgba(0,0,0,0.4)", zIndex: 10 } : {}} viewport={{ once: true }}>
-                    <motion.div className="relative z-10" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 300 }} viewport={{ once: true }}>{skill.icon ? (<><motion.div initial={{ rotate: -180 }} whileInView={{ rotate: 0 }} transition={{ delay: index * 0.1 + 0.5 }} viewport={{ once: true }}><Figma size={24} className="mx-auto mb-1" /></motion.div> <div className="text-xs">{skill.full}</div></>) : skill.name ? (<><motion.div className="text-2xl font-bold mb-1" initial={{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: index * 0.1 + 0.4 }} viewport={{ once: true }}>{skill.name}</motion.div><motion.div className="text-xs" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: index * 0.1 + 0.6 }} viewport={{ once: true }}>{skill.full}</motion.div></>) : <div className="h-12"></div>}</motion.div>
-                    {skill.name && (<div className="mt-2 h-2 bg-black bg-opacity-20 rounded-full overflow-hidden"><motion.div className="h-2 bg-yellow-400 rounded-full" initial={{ width: 0, x: -100 }} whileInView={{ width: skill.level, x: 0 }} transition={{ duration: 1.5, ease: 'easeOut', delay: index * 0.1 + 0.8 }} viewport={{ once: true }} /></div>)}
-                    {skill.name && (<motion.div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0" initial={{ x: -100 }} whileInView={{ x: 100, opacity: [0, 0.3, 0] }} transition={{ duration: 1, delay: index * 0.1 + 1.2 }} viewport={{ once: true }} />)}
+                {softwareSkills.map((skill, index) => (
+                  <motion.div 
+                    key={index} 
+                    className={`${skill.color} text-white p-4 rounded-lg shadow-lg overflow-hidden ${skill.icon ? 'cursor-pointer' : ''} relative flex flex-col justify-center items-center h-32`} 
+                    initial={{ y: 50, opacity: 0, rotate: Math.random() * 20 - 10 }} 
+                    whileInView={{ y: 0, opacity: 1, rotate: 0 }} 
+                    transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 200 }} 
+                    whileHover={skill.icon ? { scale: 1.1, y: -10, rotate: Math.random() * 10 - 5, boxShadow: "0 15px 35px rgba(0,0,0,0.4)", zIndex: 10 } : {}} 
+                    viewport={{ once: true }}
+                  >
+                    <motion.div 
+                      className="relative z-10 text-center flex-grow flex flex-col items-center justify-center" 
+                      initial={{ scale: 0 }} 
+                      whileInView={{ scale: 1 }} 
+                      transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 300 }} 
+                      viewport={{ once: true }}
+                    >
+                      {skill.icon ? (
+                        <>
+                          <skill.icon size={32} className="mx-auto" />
+                          <motion.div 
+                            className="text-sm mt-2" 
+                            initial={{ y: 20, opacity: 0 }} 
+                            whileInView={{ y: 0, opacity: 1 }} 
+                            transition={{ delay: index * 0.1 + 0.6 }} 
+                            viewport={{ once: true }}
+                          >
+                            {skill.full}
+                          </motion.div>
+                        </>
+                      ) : (
+                        <div className="h-12"></div>
+                      )}
+                    </motion.div>
+                    {skill.icon && (
+                      <div className="w-full mt-auto h-2 bg-black bg-opacity-20 rounded-full overflow-hidden">
+                        <motion.div 
+                          className="h-2 bg-yellow-400 rounded-full" 
+                          initial={{ width: '0%' }} 
+                          whileInView={{ width: skill.level }} 
+                          transition={{ duration: 1.5, ease: 'easeOut', delay: index * 0.1 + 0.8 }} 
+                          viewport={{ once: true }} 
+                        />
+                      </div>
+                    )}
+                    {skill.icon && (
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0" 
+                        initial={{ x: -100 }} 
+                        whileInView={{ x: 100, opacity: [0, 0.3, 0] }} 
+                        transition={{ duration: 1, delay: index * 0.1 + 1.2 }} 
+                        viewport={{ once: true }} 
+                      />
+                    )}
                   </motion.div>
                 ))}
               </motion.div>
