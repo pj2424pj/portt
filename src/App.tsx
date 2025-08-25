@@ -989,7 +989,92 @@ function App() {
         </motion.section>
 
         <motion.section id="contact" className="bg-yellow-400/80 backdrop-blur-sm p-8 relative overflow-hidden" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
-          <motion.div className="absolute top-10 left-10 w-20 h-20 bg-white opacity-10 rounded-full" animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }} transition={{ duration: 8, repeat: Infinity }} />
+          <motion.div className="absolute top-4 left-4 w-8 h-8 bg-gray-900 rounded-full opacity-10" variants={floatingVariants} animate="animate" />
+          <motion.div className="absolute bottom-4 right-4 w-12 h-12 bg-gray-900 rounded-full opacity-5" variants={floatingVariants} animate="animate" transition={{ delay: 1 }} />
+          <motion.div className="absolute top-1/2 left-1/4 w-6 h-6 bg-gray-900 rounded-full opacity-8" variants={floatingVariants} animate="animate" transition={{ delay: 0.5 }} />
+          
+          <div className="relative z-10">
+            <motion.h2 className="text-3xl font-bold text-gray-900 mb-6 text-center" initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              Let's Connect & Create Something Amazing!
+            </motion.h2>
+            
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <motion.div className="space-y-4" initial={{ x: -50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }}>
+                <motion.div className="flex items-center space-x-3 bg-white/20 backdrop-blur-sm p-4 rounded-lg" whileHover={{ x: 5, backgroundColor: "rgba(255,255,255,0.3)" }} transition={{ type: "spring", stiffness: 300 }}>
+                  <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                    <Phone size={20} className="text-yellow-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-900 font-medium">Phone</p>
+                    <motion.a 
+                      href="tel:+918409066141" 
+                      className="text-gray-700 hover:text-gray-900 transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      +91 8409066141
+                    </motion.a>
+                  </div>
+                </motion.div>
+                
+                <motion.div className="flex items-center space-x-3 bg-white/20 backdrop-blur-sm p-4 rounded-lg" whileHover={{ x: 5, backgroundColor: "rgba(255,255,255,0.3)" }} transition={{ type: "spring", stiffness: 300 }}>
+                  <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                    <Mail size={20} className="text-yellow-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-900 font-medium">Email</p>
+                    <motion.a 
+                      href="mailto:kumarvishabh700@gmail.com" 
+                      className="text-gray-700 hover:text-gray-900 transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      kumarvishabh700@gmail.com
+                    </motion.a>
+                  </div>
+                </motion.div>
+                
+                <motion.div className="flex items-center space-x-3 bg-white/20 backdrop-blur-sm p-4 rounded-lg" whileHover={{ x: 5, backgroundColor: "rgba(255,255,255,0.3)" }} transition={{ type: "spring", stiffness: 300 }}>
+                  <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                    <Linkedin size={20} className="text-yellow-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-900 font-medium">LinkedIn</p>
+                    <motion.a 
+                      href="https://www.linkedin.com/in/rishabhkumar26" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 hover:text-gray-900 transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      rishabhkumar26
+                    </motion.a>
+                  </div>
+                </motion.div>
+              </motion.div>
+              
+              <motion.div className="bg-white/20 backdrop-blur-sm p-6 rounded-lg" initial={{ x: 50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }} viewport={{ once: true }}>
+                <motion.div className="text-right mb-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.6 }} viewport={{ once: true }}>
+                  <p className="text-gray-700 italic text-sm leading-relaxed">
+                    Please don't hesitate to reach me if this resume doesn't provide enough clarification
+                  </p>
+                </motion.div>
+                
+                <div className="space-y-3">
+                  <motion.div className="flex items-center justify-end space-x-2" whileHover={{ x: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                    <Coffee size={16} className="text-gray-700" />
+                    <span className="text-gray-700 text-sm">Fueling on coffee</span>
+                  </motion.div>
+                  <motion.div className="flex items-center justify-end space-x-2" whileHover={{ x: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                    <Music size={16} className="text-gray-700" />
+                    <span className="text-gray-700 text-sm">Curating playlists</span>
+                  </motion.div>
+                  <motion.div className="flex items-center justify-end space-x-2" whileHover={{ x: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                    <Gamepad2 size={16} className="text-gray-700" />
+                    <span className="text-gray-700 text-sm">Exploring worlds</span>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
           <motion.div className="absolute bottom-10 right-10 w-16 h-16 bg-white opacity-10 rounded-full" animate={{ scale: [1.2, 1, 1.2], rotate: [360, 180, 0] }} transition={{ duration: 6, repeat: Infinity }} />
           <div className="max-w-4xl mx-auto relative z-10">
             <motion.h2 className="text-4xl font-bold text-gray-900 text-center mb-8" initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>Let's Work Together</motion.h2>
