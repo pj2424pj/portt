@@ -31,7 +31,16 @@ import {
   Music,
   Gamepad2,
   Plus,
-  ArrowUpRight
+  ArrowUpRight,
+  Paperclip,
+  Pin,
+  Bookmark,
+  Tag,
+  Hash,
+  AtSign,
+  Percent,
+  DollarSign,
+  Ampersand
 } from 'lucide-react';
 
 // NEW: Reusable component for wavy text effect on hover
@@ -174,26 +183,184 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 p-4 md:p-8">
-      {/* Enhanced Interactive Background Elements */}
-      <motion.div className="fixed top-20 left-10 w-16 h-16 bg-yellow-400 rounded-full opacity-15 z-0" variants={floatingVariants} animate="animate" />
-      <motion.div className="fixed top-40 right-20 w-12 h-12 bg-blue-500 rounded-full opacity-15 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 1 }} />
-      <motion.div className="fixed bottom-40 left-20 w-20 h-20 bg-green-400 rounded-full opacity-15 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 2 }} />
-      <motion.div className="fixed top-60 left-1/2 w-8 h-8 bg-red-400 rounded-full opacity-10 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 0.5 }} />
-      <motion.div className="fixed bottom-60 right-1/3 w-14 h-14 bg-purple-400 rounded-full opacity-12 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 1.5 }} />
-      <motion.div className="fixed top-1/3 left-1/4 w-6 h-6 bg-pink-400 rounded-full opacity-8 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 2.5 }} />
-      
-      {/* Animated geometric shapes */}
+      {/* Enhanced Dynamic Background with Collage Elements */}
+      {/* Floating Board Pins */}
       <motion.div 
-        className="fixed top-32 right-1/4 w-10 h-10 border-2 border-yellow-400 opacity-10 z-0" 
+        className="fixed top-16 left-8 z-5" 
+        variants={floatingVariants} 
+        animate="animate"
+        initial={{ rotate: -15 }}
+      >
+        <div className="w-6 h-6 bg-red-500 rounded-full shadow-lg relative">
+          <div className="absolute inset-1 bg-red-600 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-red-300 rounded-full"></div>
+        </div>
+      </motion.div>
+      
+      <motion.div 
+        className="fixed top-32 right-12 z-5" 
+        variants={floatingVariants} 
+        animate="animate"
+        initial={{ rotate: 25 }}
+        transition={{ delay: 1 }}
+      >
+        <div className="w-5 h-5 bg-blue-500 rounded-full shadow-lg relative">
+          <div className="absolute inset-1 bg-blue-600 rounded-full"></div>
+        </div>
+      </motion.div>
+      
+      <motion.div 
+        className="fixed bottom-40 left-16 z-5" 
+        variants={floatingVariants} 
+        animate="animate"
+        initial={{ rotate: -30 }}
+        transition={{ delay: 2 }}
+      >
+        <div className="w-4 h-4 bg-green-500 rounded-full shadow-lg relative">
+          <div className="absolute inset-1 bg-green-600 rounded-full"></div>
+        </div>
+      </motion.div>
+
+      {/* Floating Paperclips */}
+      <motion.div 
+        className="fixed top-24 left-1/4 text-gray-400 opacity-20 z-5" 
+        animate={{ rotate: [0, 10, -10, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Paperclip size={24} />
+      </motion.div>
+      
+      <motion.div 
+        className="fixed bottom-32 right-1/4 text-yellow-400 opacity-15 z-5" 
+        animate={{ rotate: [0, -15, 15, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      >
+        <Paperclip size={20} />
+      </motion.div>
+
+      {/* Floating Stickers/Tags */}
+      <motion.div 
+        className="fixed top-1/3 right-8 bg-yellow-400 text-gray-900 px-2 py-1 rounded text-xs font-bold opacity-25 z-5 rotate-12" 
+        variants={floatingVariants} 
+        animate="animate"
+        transition={{ delay: 0.5 }}
+      >
+        CREATIVE
+      </motion.div>
+      
+      <motion.div 
+        className="fixed bottom-1/3 left-8 bg-red-400 text-white px-2 py-1 rounded text-xs font-bold opacity-20 z-5 -rotate-12" 
+        variants={floatingVariants} 
+        animate="animate"
+        transition={{ delay: 1.5 }}
+      >
+        DESIGNER
+      </motion.div>
+      
+      <motion.div 
+        className="fixed top-2/3 left-1/3 bg-blue-400 text-white px-2 py-1 rounded text-xs font-bold opacity-15 z-5 rotate-6" 
+        variants={floatingVariants} 
+        animate="animate"
+        transition={{ delay: 2.5 }}
+      >
+        UI/UX
+      </motion.div>
+
+      {/* Floating Symbols */}
+      <motion.div 
+        className="fixed top-48 left-12 text-yellow-400 opacity-10 z-5" 
+        animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+      >
+        <Hash size={16} />
+      </motion.div>
+      
+      <motion.div 
+        className="fixed bottom-48 right-16 text-green-400 opacity-12 z-5" 
+        animate={{ rotate: -360, scale: [1, 1.1, 1] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+      >
+        <AtSign size={14} />
+      </motion.div>
+      
+      <motion.div 
+        className="fixed top-3/4 right-1/3 text-purple-400 opacity-8 z-5" 
+        animate={{ rotate: 360, y: [-5, 5, -5] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Percent size={12} />
+      </motion.div>
+
+      {/* Newspaper Clipping Style Elements */}
+      <motion.div 
+        className="fixed top-20 right-20 w-16 h-12 bg-gray-100 opacity-15 z-5 transform rotate-12 shadow-sm" 
+        variants={floatingVariants} 
+        animate="animate"
+        style={{ 
+          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 3px)',
+          clipPath: 'polygon(0 0, 95% 0, 100% 85%, 5% 100%)'
+        }}
+      />
+      
+      <motion.div 
+        className="fixed bottom-24 left-24 w-20 h-8 bg-yellow-100 opacity-20 z-5 transform -rotate-6 shadow-sm" 
+        variants={floatingVariants} 
+        animate="animate"
+        transition={{ delay: 1 }}
+        style={{ 
+          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.1) 1px, rgba(0,0,0,0.1) 2px)',
+          clipPath: 'polygon(5% 0, 100% 0, 95% 100%, 0 100%)'
+        }}
+      />
+
+      {/* Barcode Style Elements */}
+      <motion.div 
+        className="fixed top-40 left-4 w-12 h-6 opacity-10 z-5 transform rotate-45" 
+        variants={floatingVariants} 
+        animate="animate"
+        style={{ 
+          backgroundImage: 'repeating-linear-gradient(90deg, #000 0px, #000 1px, transparent 1px, transparent 3px)',
+        }}
+      />
+      
+      <motion.div 
+        className="fixed bottom-60 right-8 w-8 h-4 opacity-8 z-5 transform -rotate-30" 
+        variants={floatingVariants} 
+        animate="animate"
+        transition={{ delay: 2 }}
+        style={{ 
+          backgroundImage: 'repeating-linear-gradient(90deg, #333 0px, #333 1px, transparent 1px, transparent 2px)',
+        }}
+      />
+
+      {/* Geometric Shapes with Enhanced Styling */}
+      <motion.div 
+        className="fixed top-32 right-1/4 w-8 h-8 border-2 border-yellow-400 opacity-15 z-5" 
         animate={{ rotate: 360 }} 
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
       />
+      
       <motion.div 
-        className="fixed bottom-32 left-1/3 w-12 h-12 border-2 border-blue-400 opacity-8 z-0" 
+        className="fixed bottom-32 left-1/3 w-6 h-6 border-2 border-blue-400 opacity-12 z-5" 
         animate={{ rotate: -360 }} 
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       />
+      
+      <motion.div 
+        className="fixed top-1/2 left-8 w-4 h-4 bg-red-400 opacity-10 z-5" 
+        animate={{ rotate: 45, scale: [1, 1.3, 1] }} 
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)' }}
+      />
+
+      {/* Floating Circles with Different Sizes */}
+      <motion.div className="fixed top-20 left-10 w-12 h-12 bg-yellow-400 rounded-full opacity-12 z-0" variants={floatingVariants} animate="animate" />
+      <motion.div className="fixed top-40 right-20 w-8 h-8 bg-blue-500 rounded-full opacity-10 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 1 }} />
+      <motion.div className="fixed bottom-40 left-20 w-16 h-16 bg-green-400 rounded-full opacity-8 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 2 }} />
+      <motion.div className="fixed top-60 left-1/2 w-6 h-6 bg-red-400 rounded-full opacity-8 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 0.5 }} />
+      <motion.div className="fixed bottom-60 right-1/3 w-10 h-10 bg-purple-400 rounded-full opacity-10 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 1.5 }} />
+      <motion.div className="fixed top-1/3 left-1/4 w-4 h-4 bg-pink-400 rounded-full opacity-6 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 2.5 }} />
 
       {/* Top Navigation Bar */}
       <motion.nav 
@@ -258,6 +425,34 @@ function App() {
             <div className="w-8 h-12 bg-gradient-to-b from-gray-100 to-gray-200 rounded-t-full rounded-b-sm mx-auto -mt-14"></div>
           </div>
         </motion.div>
+        
+        {/* Additional Decorative Elements on Main Container */}
+        <motion.div 
+          className="absolute -top-2 right-12 z-20" 
+          animate={{ rotate: [0, 15, -15, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <div className="w-4 h-4 bg-red-500 rounded-full shadow-md relative">
+            <div className="absolute inset-1 bg-red-600 rounded-full"></div>
+          </div>
+        </motion.div>
+        
+        <motion.div 
+          className="absolute top-8 -right-3 z-20 bg-yellow-400 text-gray-900 px-2 py-1 rounded text-xs font-bold shadow-sm" 
+          style={{ transform: 'rotate(15deg)' }}
+          animate={{ y: [-2, 2, -2] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        >
+          NEW!
+        </motion.div>
+        
+        <motion.div 
+          className="absolute -bottom-3 left-16 z-20" 
+          animate={{ rotate: [0, -10, 10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Paperclip size={20} className="text-gray-600 opacity-60" />
+        </motion.div>
 
         <motion.div id="home" className="relative bg-white/70 backdrop-blur-sm p-8 border-b-2 border-gray-100/50" variants={containerVariants} initial="hidden" animate="visible">
           <div className="flex flex-col lg:flex-row gap-8">
@@ -289,21 +484,85 @@ function App() {
             <motion.div className="w-full md:w-64 lg:w-72 flex-shrink-0 order-2 lg:order-1" initial={{ x: -200, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}>
               <motion.div className="w-full md:w-64 lg:w-72 h-80 md:h-80 lg:h-96 bg-yellow-400 rounded-lg overflow-hidden shadow-lg relative group mx-auto" initial={{ scale: 0.8, rotate: -5 }} animate={{ scale: 1, rotate: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
                 <img src="/cutu.jpg" alt="Rishabh Agrawal" className="w-full h-full object-cover" />
+                {/* Enhanced Photo Decorations */}
                 <motion.div className="absolute -top-2 -left-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 0.8, type: 'spring' }} />
                 <motion.div className="absolute -bottom-2 -right-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 0.9, type: 'spring' }} />
+                
+                {/* Board Pin on Photo */}
+                <motion.div 
+                  className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10" 
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="w-5 h-5 bg-red-500 rounded-full shadow-lg relative">
+                    <div className="absolute inset-1 bg-red-600 rounded-full"></div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-red-300 rounded-full"></div>
+                  </div>
+                </motion.div>
+                
+                {/* Sticker on Photo */}
+                <motion.div 
+                  className="absolute top-2 -right-2 bg-green-400 text-white px-1.5 py-0.5 rounded text-xs font-bold shadow-sm z-10" 
+                  style={{ transform: 'rotate(15deg)' }}
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  ★
+                </motion.div>
+                
                 {/* Enhanced photo decorations */}
                 <motion.div className="absolute top-4 right-4 w-6 h-6 border-2 border-white/50 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }} />
                 <motion.div className="absolute bottom-4 left-4 w-4 h-4 bg-white/30 rounded-full" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+                
+                {/* Barcode Style Element */}
+                <motion.div 
+                  className="absolute bottom-2 right-2 w-8 h-3 opacity-30" 
+                  style={{ 
+                    backgroundImage: 'repeating-linear-gradient(90deg, #fff 0px, #fff 1px, transparent 1px, transparent 2px)',
+                  }}
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
               </motion.div>
               {/* My Story card slides from left after photo - Enhanced size */}
               <motion.div className="mt-6 p-6 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200 order-3" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}>
+                {/* Board Pin on My Story Card */}
+                <motion.div 
+                  className="absolute -top-2 left-4 z-10" 
+                  animate={{ rotate: [0, 8, -8, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="w-4 h-4 bg-blue-500 rounded-full shadow-md relative">
+                    <div className="absolute inset-0.5 bg-blue-600 rounded-full"></div>
+                  </div>
+                </motion.div>
+                
+                {/* Tape Effect */}
+                <motion.div 
+                  className="absolute -top-1 right-8 w-12 h-4 bg-yellow-200/60 backdrop-blur-sm" 
+                  style={{ transform: 'rotate(-8deg)' }}
+                  animate={{ opacity: [0.6, 0.8, 0.6] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                />
+                
                 <div className="relative inline-block">
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-800 mb-3 italic">My Story</h3>
                   <motion.div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 1.5 }} style={{ transformOrigin: 'left' }} />
                 </div>
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed">From scribbling on notebooks to crafting pixel-perfect interfaces. My journey is fueled by a passion for turning complex problems into beautiful, intuitive designs.</p>
+                
                 {/* Enhanced story decorations */}
-                <motion.div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400/20 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} />
+                <motion.div className="absolute -bottom-2 -right-2 w-6 h-6 bg-yellow-400/20 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} />
+                
+                {/* Small Sticker */}
+                <motion.div 
+                  className="absolute bottom-2 left-2 bg-red-400 text-white px-1 py-0.5 rounded text-xs font-bold" 
+                  style={{ transform: 'rotate(-12deg)' }}
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  ♥
+                </motion.div>
               </motion.div>
             </motion.div>
 
@@ -341,18 +600,64 @@ function App() {
 
               {/* Off the Clock card slides from left */}
               <motion.div className="mt-6 p-5 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200 relative overflow-hidden" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 2.2 }}>
+                {/* Washi Tape Effect */}
+                <motion.div 
+                  className="absolute -top-2 left-8 w-16 h-6 bg-green-300/40 backdrop-blur-sm" 
+                  style={{ transform: 'rotate(-5deg)' }}
+                  animate={{ opacity: [0.4, 0.6, 0.4] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+                
+                {/* Small Pin */}
+                <motion.div 
+                  className="absolute top-1 right-4 z-10" 
+                  animate={{ rotate: [0, 12, -12, 0] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm relative">
+                    <div className="absolute inset-0.5 bg-green-600 rounded-full"></div>
+                  </div>
+                </motion.div>
+                
                 <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-800 mb-4 italic">Off the Clock</h3>
                 <motion.div className="flex items-center justify-around">
                   {[{ icon: Coffee, text: "Fueling on coffee" }, { icon: Music, text: "Curating playlists" }, { icon: Gamepad2, text: "Exploring worlds" }].map((interest, index) => (
                     <motion.div key={index} className="flex flex-col items-center gap-2 text-center text-gray-600" initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 2.4 + index * 0.1 }} whileHover={{ scale: 1.15, color: "#111827" }} transition={{ type: "spring", stiffness: 300 }}><interest.icon size={32} /> <span className="text-xs md:text-sm">{interest.text}</span></motion.div>
                   ))}
                 </motion.div>
+                
                 {/* Enhanced card decorations */}
-                <motion.div className="absolute top-2 right-2 w-3 h-3 bg-yellow-400/30 rounded-full" animate={{ scale: [1, 1.5, 1] }} transition={{ duration: 3, repeat: Infinity }} />
+                <motion.div className="absolute bottom-2 right-2 w-2 h-2 bg-yellow-400/30 rounded-full" animate={{ scale: [1, 1.5, 1] }} transition={{ duration: 3, repeat: Infinity }} />
+                
+                {/* Doodle Element */}
+                <motion.div 
+                  className="absolute bottom-1 left-1 text-gray-400 opacity-40" 
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Hash size={12} />
+                </motion.div>
               </motion.div>
 
               {/* Core Strengths card slides from right */}
               <motion.div className="mt-6 p-5 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200 relative overflow-hidden" initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 2.6 }}>
+                {/* Paperclip on Core Strengths */}
+                <motion.div 
+                  className="absolute -top-1 right-6 z-10" 
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Paperclip size={16} className="text-gray-500 opacity-60" />
+                </motion.div>
+                
+                {/* Corner Fold Effect */}
+                <motion.div 
+                  className="absolute top-0 right-0 w-6 h-6 bg-gray-200/40" 
+                  style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%)' }}
+                  animate={{ opacity: [0.4, 0.6, 0.4] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                />
+                
                  <div className="relative inline-block">
                   <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-800 mb-4 italic">Core Strengths</h3>
                   <motion.div className="absolute bottom-2 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 2.8 }} style={{ transformOrigin: 'left' }} />
@@ -362,8 +667,19 @@ function App() {
                     <motion.li key={index} className="flex items-start gap-3" initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 3 + index * 0.1 }}><strength.icon size={22} className={`${strength.color} mt-1 flex-shrink-0`} /><div><h4 className="font-bold text-gray-800 text-base md:text-lg">{strength.title}</h4> <p className="text-sm md:text-base text-gray-600">{strength.description}</p></div></motion.li>
                   ))}
                 </motion.ul>
+                
                 {/* Enhanced card decorations */}
-                <motion.div className="absolute bottom-2 right-2 w-4 h-4 border border-yellow-400/30 rounded-full" animate={{ rotate: -360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }} />
+                <motion.div className="absolute bottom-2 right-2 w-3 h-3 border border-yellow-400/30 rounded-full" animate={{ rotate: -360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }} />
+                
+                {/* Small Tag */}
+                <motion.div 
+                  className="absolute bottom-1 left-1 bg-blue-400 text-white px-1 py-0.5 rounded text-xs font-bold" 
+                  style={{ transform: 'rotate(8deg)' }}
+                  animate={{ y: [-1, 1, -1] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  ★★★
+                </motion.div>
               </motion.div>
 
               <motion.div className="mt-auto pt-6 text-right" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 3.5 }}>
