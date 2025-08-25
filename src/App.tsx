@@ -180,12 +180,12 @@ function App() {
       <motion.div className="fixed bottom-40 left-20 w-20 h-20 bg-green-400 rounded-full opacity-20 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 2 }} />
 
       <motion.nav className="fixed top-1/2 right-4 md:right-8 transform -translate-y-1/2 z-50 bg-gray-800 bg-opacity-50 backdrop-blur-sm p-2 rounded-full hidden lg:block" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}>
-        <ul className="space-y-3">
+        <ul className="space-y-4">
           {sections.map(section => (
-            <li key={section} className="relative flex justify-center">
-              <button onClick={() => scrollToSection(section)} className="w-8 h-8 flex items-center justify-center rounded-full transition-colors group relative focus:outline-none">
+            <li key={section} className="relative flex justify-center items-center">
+              <button onClick={() => scrollToSection(section)} className="w-3 h-3 flex items-center justify-center rounded-full transition-colors group relative focus:outline-none">
                 {activeSection === section && (<motion.div layoutId="activePill" className="absolute inset-0 bg-yellow-400 rounded-full" style={{ originY: "0" }} transition={{ type: "spring", stiffness: 500, damping: 30 }} />)}
-                <span className={`w-2 h-2 rounded-full transition-colors ${activeSection === section ? 'bg-gray-900' : 'bg-white group-hover:bg-yellow-300'}`}></span>
+                <span className={`w-3 h-3 rounded-full transition-colors ${activeSection === section ? 'bg-gray-900' : 'bg-white group-hover:bg-yellow-300'}`}></span>
               </button>
             </li>
           ))}
@@ -193,7 +193,7 @@ function App() {
       </motion.nav>
 
       {/* UPDATED: Simplified main container animation to a simple fade-in */}
-      <motion.div className="max-w-5xl mx-auto rounded-lg shadow-2xl overflow-hidden relative z-10" style={{ backgroundImage: 'url(/img2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut" }}>
+      <motion.div className="max-w-5xl mx-auto rounded-lg shadow-2xl overflow-hidden relative z-10" style={{ backgroundImage: 'url(/img2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }}>
         <motion.div className="absolute -top-4 left-8 z-20" style={{ rotate: paperClipRotate }} whileHover={{ scale: 1.1, rotate: 20 }} transition={{ type: "spring", stiffness: 300 }}>
           <div className="w-16 h-20 bg-gradient-to-b from-gray-300 to-gray-400 rounded-t-full rounded-b-sm shadow-lg">
             <div className="w-12 h-16 bg-gradient-to-b from-gray-200 to-gray-300 rounded-t-full rounded-b-sm mx-auto mt-1"></div>
@@ -203,39 +203,39 @@ function App() {
 
         <motion.div id="home" className="relative bg-white/70 backdrop-blur-sm p-8 border-b-2 border-gray-100/50" variants={containerVariants} initial="hidden" animate="visible">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* UPDATED: Image block now slides in from the left */}
-            <motion.div className="w-48 flex-shrink-0" variants={slideInFromLeft}>
-              <div className="w-48 h-64 bg-yellow-400 rounded-lg overflow-hidden shadow-lg relative group">
+            {/* Photo section with staggered animations */}
+            <motion.div className="w-48 flex-shrink-0" initial={{ x: -200, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}>
+              <motion.div className="w-48 h-64 bg-yellow-400 rounded-lg overflow-hidden shadow-lg relative group" initial={{ scale: 0.8, rotate: -5 }} animate={{ scale: 1, rotate: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
                 <img src="/cutu.jpg" alt="Rishabh Agrawal" className="w-full h-full object-cover" />
-                <motion.div className="absolute -top-2 -left-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 1, type: 'spring' }} />
-                <motion.div className="absolute -bottom-2 -right-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 1.1, type: 'spring' }} />
-              </div>
-              {/* UPDATED: My Story card slides from left */}
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}>
+                <motion.div className="absolute -top-2 -left-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 0.8, type: 'spring' }} />
+                <motion.div className="absolute -bottom-2 -right-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 0.9, type: 'spring' }} />
+              </motion.div>
+              {/* My Story card slides from left after photo */}
+              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}>
                 <div className="relative inline-block">
                   <h3 className="text-2xl font-serif font-bold text-gray-800 mb-2 italic">My Story</h3>
-                  <motion.div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 1 }} viewport={{ once: true }} style={{ transformOrigin: 'left' }} />
+                  <motion.div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 1.5 }} style={{ transformOrigin: 'left' }} />
                 </div>
                 <p className="text-base text-gray-700 leading-relaxed">From scribbling on notebooks to crafting pixel-perfect interfaces. My journey is fueled by a passion for turning complex problems into beautiful, intuitive designs.</p>
               </motion.div>
             </motion.div>
 
-            {/* UPDATED: Text content block now slides in from the right */}
-            <motion.div className="flex-1 flex flex-col" variants={slideInFromRight}>
-              {/* Animated Name */}
-              <motion.h1 className="text-5xl font-bold text-gray-900 mb-2 flex overflow-hidden" variants={textContainerVariant}>
+            {/* Name and content section */}
+            <motion.div className="flex-1 flex flex-col">
+              {/* Name slides in after photo */}
+              <motion.h1 className="text-5xl font-bold text-gray-900 mb-2 flex overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}>
                   {"Rishabh Agrawal".split("").map((char, index) => (
-                      <motion.span key={index} variants={textChildVariant}>
+                      <motion.span key={index} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.9 + index * 0.05 }}>
                           {char === " " ? "\u00A0" : char}
                       </motion.span>
                   ))}
               </motion.h1>
-              {/* Animated Bio */}
-              <motion.p className="text-lg text-gray-600 mb-6 leading-relaxed flex flex-wrap overflow-hidden" variants={textContainerVariant} transition={{delayChildren: 1}}>
+              {/* Bio slides in from right */}
+              <motion.p className="text-lg text-gray-600 mb-6 leading-relaxed flex flex-wrap overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 1.4 }}>
                   {"I break problems into smaller ones—and sometimes break production in the process (but I fix it faster!).".split(" ").map((word, index) => (
                       <span key={index} className="flex mr-1.5">
                           {word.split("").map((char, charIndex) => (
-                               <motion.span key={charIndex} variants={textChildVariant}>
+                               <motion.span key={charIndex} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.3, delay: 1.6 + index * 0.1 + charIndex * 0.02 }}>
                                   {char}
                               </motion.span>
                           ))}
@@ -243,7 +243,7 @@ function App() {
                   ))}
               </motion.p>
               
-              <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4" variants={containerVariants}>
+              <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut", delay: 1.8 }}>
                 <motion.div className="space-y-2" variants={itemVariants}>
                   <motion.div className="flex items-center space-x-2" whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}><Calendar size={16} className="text-gray-600" /> <span className="text-gray-600">26th September 2004</span></motion.div>
                   <motion.div className="flex items-center space-x-2" whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}><Mail size={16} className="text-gray-600" /> <span className="text-gray-600">kumarvrishabh700@gmail.com</span></motion.div>
@@ -252,30 +252,30 @@ function App() {
                 <motion.div className="space-y-2" variants={itemVariants}><div className="flex items-center space-x-2"><MapPin size={16} className="text-gray-600" /> <span className="text-gray-600">LOC: Ghaziabad, India</span></div></motion.div>
               </motion.div>
 
-              {/* UPDATED: Off the Clock card slides from right */}
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease: "easeInOut" }} viewport={{ once: true }}>
+              {/* Off the Clock card slides from left */}
+              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 2.2 }}>
                 <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 italic">Off the Clock</h3>
-                <motion.div className="flex items-center justify-around" variants={containerVariants}>
+                <motion.div className="flex items-center justify-around">
                   {[{ icon: Coffee, text: "Fueling on coffee" }, { icon: Music, text: "Curating playlists" }, { icon: Gamepad2, text: "Exploring worlds" }].map((interest, index) => (
-                    <motion.div key={index} className="flex flex-col items-center gap-2 text-center text-gray-600" variants={itemVariants} whileHover={{ scale: 1.1, color: "#111827" }} transition={{ type: "spring", stiffness: 300 }}><interest.icon size={28} /> <span className="text-xs">{interest.text}</span></motion.div>
+                    <motion.div key={index} className="flex flex-col items-center gap-2 text-center text-gray-600" initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 2.4 + index * 0.1 }} whileHover={{ scale: 1.1, color: "#111827" }} transition={{ type: "spring", stiffness: 300 }}><interest.icon size={28} /> <span className="text-xs">{interest.text}</span></motion.div>
                   ))}
                 </motion.div>
               </motion.div>
 
-              {/* UPDATED: Core Strengths card slides from right */}
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }} viewport={{ once: true }}>
+              {/* Core Strengths card slides from right */}
+              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 2.6 }}>
                  <div className="relative inline-block">
                   <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 italic">Core Strengths</h3>
-                  <motion.div className="absolute bottom-2 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }} viewport={{ once: true }} style={{ transformOrigin: 'left' }} />
+                  <motion.div className="absolute bottom-2 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 2.8 }} style={{ transformOrigin: 'left' }} />
                  </div>
-                <motion.ul className="space-y-3" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                <motion.ul className="space-y-3">
                   {[{ icon: Lightbulb, title: "Intuitive UI/UX", description: "Crafting user-centric and accessible interfaces.", color: "text-yellow-500" }, { icon: Rocket, title: "Dynamic Motion", description: "Bringing designs to life with meaningful animations.", color: "text-blue-500" }, { icon: Sparkles, title: "Polished Execution", description: "A keen eye for detail and pixel-perfect results.", color: "text-red-500" }].map((strength, index) => (
-                    <motion.li key={index} className="flex items-start gap-3" variants={itemVariants}><strength.icon size={20} className={`${strength.color} mt-1 flex-shrink-0`} /><div><h4 className="font-bold text-gray-800">{strength.title}</h4> <p className="text-sm text-gray-600">{strength.description}</p></div></motion.li>
+                    <motion.li key={index} className="flex items-start gap-3" initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 3 + index * 0.1 }}><strength.icon size={20} className={`${strength.color} mt-1 flex-shrink-0`} /><div><h4 className="font-bold text-gray-800">{strength.title}</h4> <p className="text-sm text-gray-600">{strength.description}</p></div></motion.li>
                   ))}
                 </motion.ul>
               </motion.div>
 
-              <motion.div className="mt-auto pt-6 text-right" variants={itemVariants}>
+              <motion.div className="mt-auto pt-6 text-right" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 3.5 }}>
                 <motion.div className="text-red-500 italic mb-2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}>Please don't hesitate to<br />reach me if this resume<br />doesn't provide enough<br />clarification</motion.div>
                 <motion.div className="flex items-center justify-end space-x-2" whileHover={{ x: -5 }} transition={{ type: "spring", stiffness: 300 }}><Phone size={16} className="text-red-500" /> <span className="text-gray-700">+91 8409066141</span></motion.div>
                 <motion.div className="flex items-center justify-end space-x-2 mt-1" whileHover={{ x: -5 }} transition={{ type: "spring", stiffness: 300 }}><Linkedin size={16} className="text-blue-600" /> <span className="text-gray-700">www.linkedin.com</span></motion.div>
@@ -323,23 +323,29 @@ function App() {
           <div className="space-y-8">
             <motion.section id="skills" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
               <SectionHeader title="Area of Expertise" />
-              <div className="relative h-96 flex items-center justify-center">
-                  <motion.div className="absolute w-64 h-20 bg-[#D3A429]/90 backdrop-blur-sm flex items-center justify-center" style={{ clipPath: 'polygon(15% 0, 85% 0, 100% 100%, 0% 100%)', top: '20%' }} initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, delay: 0.1 }} whileHover={{ scale: 1.05, y: -5, rotate: 2 }}><motion.h3 className="text-white font-bold text-lg tracking-wider" initial={{ letterSpacing: '0px' }} whileHover={{ letterSpacing: '2px' }}>PROMOTIONAL DESIGN</motion.h3></motion.div>
-                  <motion.div className="absolute w-40 h-40 bg-[#D84545]/90 backdrop-blur-sm flex flex-col items-center justify-center" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%)', left: '5%', top: '45%' }} initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, delay: 0.2 }} whileHover={{ scale: 1.05, x: -5, rotate: -2 }}><h3 className="text-white font-bold text-4xl">UI</h3><p className="text-white text-lg tracking-widest">DESIGN</p></motion.div>
-                  <motion.div className="absolute w-48 h-16 bg-[#43A4D3]/90 backdrop-blur-sm flex items-center justify-center" style={{ clipPath: 'polygon(0 0, 100% 25%, 100% 100%, 0 100%)', left: '30%', top: '75%' }} initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, delay: 0.3 }} whileHover={{ scale: 1.05, y: 5, rotate: 1 }}><h3 className="text-white font-bold text-lg tracking-wider">EDITORIAL DESIGN</h3></motion.div>
-                  <motion.div className="absolute w-48 h-16 bg-[#5AB889]/90 backdrop-blur-sm flex items-center justify-center" style={{ clipPath: 'polygon(0 25%, 100% 0, 100% 100%, 0 100%)', right: '5%', top: '55%' }} initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, delay: 0.4 }} whileHover={{ scale: 1.05, x: 5, rotate: 2 }}><h3 className="text-white font-bold text-lg tracking-wider">MOTION GRAPHICS</h3></motion.div>
-              </div>
+              <motion.div className="relative h-96 flex items-center justify-center" initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true }}>
+                  <motion.div className="absolute w-64 h-20 bg-[#D3A429]/90 backdrop-blur-sm flex items-center justify-center" style={{ clipPath: 'polygon(15% 0, 85% 0, 100% 100%, 0% 100%)', top: '20%' }} initial={{ y: -50, opacity: 0, rotate: -10 }} whileInView={{ y: 0, opacity: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 200, delay: 0.2 }} whileHover={{ scale: 1.1, y: -10, rotate: 3, boxShadow: "0 10px 30px rgba(211, 164, 41, 0.4)" }} viewport={{ once: true }}><motion.h3 className="text-white font-bold text-lg tracking-wider" initial={{ letterSpacing: '0px' }} whileHover={{ letterSpacing: '3px' }} transition={{ duration: 0.3 }}>PROMOTIONAL DESIGN</motion.h3></motion.div>
+                  <motion.div className="absolute w-40 h-40 bg-[#D84545]/90 backdrop-blur-sm flex flex-col items-center justify-center" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%)', left: '5%', top: '45%' }} initial={{ x: -60, opacity: 0, scale: 0.5 }} whileInView={{ x: 0, opacity: 1, scale: 1 }} transition={{ type: 'spring', stiffness: 200, delay: 0.4 }} whileHover={{ scale: 1.15, x: -10, rotate: -5, boxShadow: "0 15px 40px rgba(216, 69, 69, 0.4)" }} viewport={{ once: true }}><motion.h3 className="text-white font-bold text-4xl" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 0.6, type: 'spring', stiffness: 300 }} viewport={{ once: true }}>UI</motion.h3><motion.p className="text-white text-lg tracking-widest" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.8 }} viewport={{ once: true }}>DESIGN</motion.p></motion.div>
+                  <motion.div className="absolute w-48 h-16 bg-[#43A4D3]/90 backdrop-blur-sm flex items-center justify-center" style={{ clipPath: 'polygon(0 0, 100% 25%, 100% 100%, 0 100%)', left: '30%', top: '75%' }} initial={{ y: 50, opacity: 0, rotate: 10 }} whileInView={{ y: 0, opacity: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 200, delay: 0.6 }} whileHover={{ scale: 1.1, y: 10, rotate: 2, boxShadow: "0 10px 30px rgba(67, 164, 211, 0.4)" }} viewport={{ once: true }}><motion.h3 className="text-white font-bold text-lg tracking-wider" initial={{ letterSpacing: '0px' }} whileHover={{ letterSpacing: '3px' }} transition={{ duration: 0.3 }}>EDITORIAL DESIGN</motion.h3></motion.div>
+                  <motion.div className="absolute w-48 h-16 bg-[#5AB889]/90 backdrop-blur-sm flex items-center justify-center" style={{ clipPath: 'polygon(0 25%, 100% 0, 100% 100%, 0 100%)', right: '5%', top: '55%' }} initial={{ x: 60, opacity: 0, rotate: -10 }} whileInView={{ x: 0, opacity: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 200, delay: 0.8 }} whileHover={{ scale: 1.1, x: 10, rotate: -3, boxShadow: "0 10px 30px rgba(90, 184, 137, 0.4)" }} viewport={{ once: true }}><motion.h3 className="text-white font-bold text-lg tracking-wider" initial={{ letterSpacing: '0px' }} whileHover={{ letterSpacing: '3px' }} transition={{ duration: 0.3 }}>MOTION GRAPHICS</motion.h3></motion.div>
+                  
+                  {/* Floating particles */}
+                  <motion.div className="absolute w-2 h-2 bg-yellow-400 rounded-full" style={{ top: '10%', left: '20%' }} animate={{ y: [-5, 5, -5], opacity: [0.3, 1, 0.3] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
+                  <motion.div className="absolute w-1 h-1 bg-blue-400 rounded-full" style={{ top: '80%', right: '25%' }} animate={{ y: [5, -5, 5], opacity: [0.5, 1, 0.5] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
+                  <motion.div className="absolute w-1.5 h-1.5 bg-green-400 rounded-full" style={{ top: '30%', right: '15%' }} animate={{ y: [-3, 3, -3], opacity: [0.4, 1, 0.4] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} />
+              </motion.div>
             </motion.section>
 
             <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }}>
               <SectionHeader title="Software Skills">
-                <motion.svg className="absolute top-2 -right-10 w-16 h-12" viewBox="0 0 100 100" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.5 }} viewport={{ once: true }}><motion.path d="M20 30 C 40 10, 60 60, 80 40 S 90 70, 70 80" stroke="#2dd4bf" strokeWidth="4" fill="transparent" initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, ease: "easeInOut", delay: 0.8 }} viewport={{ once: true }} /></motion.svg>
+                <motion.svg className="absolute top-2 -right-10 w-16 h-12" viewBox="0 0 100 100" initial={{ opacity: 0, rotate: -180 }} whileInView={{ opacity: 1, rotate: 0 }} transition={{ delay: 0.5, duration: 0.8 }} viewport={{ once: true }}><motion.path d="M20 30 C 40 10, 60 60, 80 40 S 90 70, 70 80" stroke="#2dd4bf" strokeWidth="4" fill="transparent" initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} transition={{ duration: 2, ease: "easeInOut", delay: 0.8 }} viewport={{ once: true }} /></motion.svg>
               </SectionHeader>
-              <motion.div className="grid grid-cols-3 gap-4" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <motion.div className="grid grid-cols-3 gap-4" initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true }}>
                 {[{ name: "Ae", full: "After Effects", color: "bg-blue-900", level: "95%" }, { name: "Pr", full: "Premiere Pro", color: "bg-purple-900", level: "90%" }, { name: "Ps", full: "Photoshop", color: "bg-blue-600", level: "85%" }, { name: "Ai", full: "Illustrator", color: "bg-orange-600", level: "90%" }, { name: "Xd", full: "Adobe XD", color: "bg-pink-600", level: "80%" }, { name: "Figma", full: "Figma", color: "bg-gray-800", level: "95%", icon: true }, { name: "Dn", full: "Dimension", color: "bg-green-600", level: "70%" }, { name: "M", full: "Maya", color: "bg-teal-600", level: "65%" }, { name: "", full: "", color: "bg-gray-200/50", level: "0%" }].map((skill, index) => (
-                  <motion.div key={index} className={`${skill.color} text-white p-4 rounded-lg shadow-lg overflow-hidden ${skill.name ? 'cursor-pointer' : ''}`} variants={itemVariants} whileHover={skill.name ? { scale: 1.05, y: -5, boxShadow: "0 10px 25px rgba(0,0,0,0.3)" } : {}} transition={{ type: "spring", stiffness: 300 }}>
-                    <div className="relative z-10">{skill.icon ? (<><Figma size={24} className="mx-auto mb-1" /> <div className="text-xs">{skill.full}</div></>) : skill.name ? (<><div className="text-2xl font-bold mb-1">{skill.name}</div><div className="text-xs">{skill.full}</div></>) : <div className="h-12"></div>}</div>
-                    {skill.name && (<div className="mt-2 h-2 bg-black bg-opacity-20 rounded-full"><motion.div className="h-2 bg-yellow-400 rounded-full" initial={{ width: 0 }} whileInView={{ width: skill.level }} transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }} viewport={{ once: true }} /></div>)}
+                  <motion.div key={index} className={`${skill.color} text-white p-4 rounded-lg shadow-lg overflow-hidden ${skill.name ? 'cursor-pointer' : ''} relative`} initial={{ y: 50, opacity: 0, rotate: Math.random() * 20 - 10 }} whileInView={{ y: 0, opacity: 1, rotate: 0 }} transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 200 }} whileHover={skill.name ? { scale: 1.1, y: -10, rotate: Math.random() * 10 - 5, boxShadow: "0 15px 35px rgba(0,0,0,0.4)", zIndex: 10 } : {}} viewport={{ once: true }}>
+                    <motion.div className="relative z-10" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 300 }} viewport={{ once: true }}>{skill.icon ? (<><motion.div initial={{ rotate: -180 }} whileInView={{ rotate: 0 }} transition={{ delay: index * 0.1 + 0.5 }} viewport={{ once: true }}><Figma size={24} className="mx-auto mb-1" /></motion.div> <div className="text-xs">{skill.full}</div></>) : skill.name ? (<><motion.div className="text-2xl font-bold mb-1" initial={{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: index * 0.1 + 0.4 }} viewport={{ once: true }}>{skill.name}</motion.div><motion.div className="text-xs" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: index * 0.1 + 0.6 }} viewport={{ once: true }}>{skill.full}</motion.div></>) : <div className="h-12"></div>}</motion.div>
+                    {skill.name && (<div className="mt-2 h-2 bg-black bg-opacity-20 rounded-full overflow-hidden"><motion.div className="h-2 bg-yellow-400 rounded-full" initial={{ width: 0, x: -100 }} whileInView={{ width: skill.level, x: 0 }} transition={{ duration: 1.5, ease: 'easeOut', delay: index * 0.1 + 0.8 }} viewport={{ once: true }} /></div>)}
+                    {skill.name && (<motion.div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0" initial={{ x: -100 }} whileInView={{ x: 100, opacity: [0, 0.3, 0] }} transition={{ duration: 1, delay: index * 0.1 + 1.2 }} viewport={{ once: true }} />)}
                   </motion.div>
                 ))}
               </motion.div>
@@ -349,21 +355,22 @@ function App() {
 
         <motion.section id="projects" className="bg-gray-50/70 backdrop-blur-sm p-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
           <SectionHeader title="Featured Projects" />
-          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true }}>
             {[{ title: "Brand Identity Design", description: "Complete brand identity package including logo, business cards, and marketing materials.", category: "Branding", color: "bg-purple-500", github: "https://github.com/aravindh/brand-identity" }, { title: "Motion Graphics Reel", description: "Animated promotional video showcasing product features with smooth transitions.", category: "Animation", color: "bg-blue-500", github: "https://github.com/aravindh/motion-reel" }, { title: "UI/UX Mobile App", description: "Modern mobile application design with intuitive user experience and clean interface.", category: "UI Design", color: "bg-green-500", github: "https://github.com/aravindh/mobile-ui" }, { title: "Editorial Layout", description: "Magazine layout design with creative typography and visual hierarchy.", category: "Print Design", color: "bg-red-500", github: "https://github.com/aravindh/editorial-design" }, { title: "Social Media Campaign", description: "Comprehensive social media visual campaign with consistent branding.", category: "Digital Marketing", color: "bg-orange-500", github: "https://github.com/aravindh/social-campaign" }, { title: "3D Product Visualization", description: "Photorealistic 3D renders for product showcase and marketing materials.", category: "3D Design", color: "bg-cyan-500", github: "https://github.com/aravindh/3d-visualization" }].map((project, index) => (
-              <motion.div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden group relative" variants={projectItemVariants} whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.15)", transition: { type: "spring", stiffness: 300 } }}>
-                <motion.div className="absolute top-2 right-2 bg-yellow-400 p-1 rounded-full text-gray-900" initial={{ scale: 0, rotate: -45 }} whileHover={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}><ArrowUpRight size={16} /></motion.div>
-                <motion.div className={`h-32 ${project.color} flex items-center justify-center relative overflow-hidden`} whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
-                  <Monitor size={48} className="text-white z-10" />
-                  <motion.div className="absolute inset-0 opacity-20" animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+              <motion.div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden group relative" initial={{ y: 100, opacity: 0, rotate: Math.random() * 10 - 5 }} whileInView={{ y: 0, opacity: 1, rotate: 0 }} transition={{ duration: 0.8, delay: index * 0.15, type: "spring", stiffness: 200 }} whileHover={{ y: -15, scale: 1.02, rotate: Math.random() * 3 - 1.5, boxShadow: "0 25px 50px rgba(0,0,0,0.2)", zIndex: 10 }} viewport={{ once: true }}>
+                <motion.div className="absolute top-2 right-2 bg-yellow-400 p-1 rounded-full text-gray-900 z-20" initial={{ scale: 0, rotate: -180 }} whileInView={{ scale: 1, rotate: 0 }} transition={{ delay: index * 0.15 + 0.5, type: 'spring', stiffness: 400 }} whileHover={{ scale: 1.2, rotate: 90 }} viewport={{ once: true }}><ArrowUpRight size={16} /></motion.div>
+                <motion.div className={`h-32 ${project.color} flex items-center justify-center relative overflow-hidden`} initial={{ scale: 0.8 }} whileInView={{ scale: 1 }} transition={{ delay: index * 0.15 + 0.2, duration: 0.6 }} whileHover={{ scale: 1.1 }} viewport={{ once: true }}>
+                  <motion.div initial={{ scale: 0, rotate: -180 }} whileInView={{ scale: 1, rotate: 0 }} transition={{ delay: index * 0.15 + 0.4, type: "spring", stiffness: 300 }} viewport={{ once: true }}><Monitor size={48} className="text-white z-10" /></motion.div>
+                  <motion.div className="absolute inset-0 opacity-20" animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                  <motion.div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0" whileHover={{ opacity: [0, 0.1, 0], x: [-100, 100] }} transition={{ duration: 0.8 }} />
                 </motion.div>
-                <div className="p-6">
-                  <div className="text-sm text-gray-500 mb-2">{project.category}</div>
+                <motion.div className="p-6" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: index * 0.15 + 0.6 }} viewport={{ once: true }}>
+                  <motion.div className="text-sm text-gray-500 mb-2" initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: index * 0.15 + 0.7 }} viewport={{ once: true }}>{project.category}</motion.div>
                   {/* UPDATED with WavyText */}
                   <WavyText text={project.title} el="h3" className="text-xl font-bold text-gray-900 mb-3" />
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{project.description}</p>
-                  <motion.a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors" whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}><Github size={16} /> <span className="text-sm font-medium">View Code</span></motion.a>
-                </div>
+                  <motion.p className="text-gray-600 text-sm leading-relaxed mb-4" initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: index * 0.15 + 0.9 }} viewport={{ once: true }}>{project.description}</motion.p>
+                  <motion.a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors" initial={{ x: -10, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: index * 0.15 + 1.1 }} whileHover={{ x: 8, scale: 1.05 }} viewport={{ once: true }}><Github size={16} /> <span className="text-sm font-medium">View Code</span></motion.a>
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>
