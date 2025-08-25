@@ -174,10 +174,68 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 p-4 md:p-8">
-      {/* Floating Background Elements */}
-      <motion.div className="fixed top-20 left-10 w-16 h-16 bg-yellow-400 rounded-full opacity-20 z-0" variants={floatingVariants} animate="animate" />
-      <motion.div className="fixed top-40 right-20 w-12 h-12 bg-blue-500 rounded-full opacity-20 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 1 }} />
-      <motion.div className="fixed bottom-40 left-20 w-20 h-20 bg-green-400 rounded-full opacity-20 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 2 }} />
+      {/* Enhanced Interactive Background Elements */}
+      <motion.div className="fixed top-20 left-10 w-16 h-16 bg-yellow-400 rounded-full opacity-15 z-0" variants={floatingVariants} animate="animate" />
+      <motion.div className="fixed top-40 right-20 w-12 h-12 bg-blue-500 rounded-full opacity-15 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 1 }} />
+      <motion.div className="fixed bottom-40 left-20 w-20 h-20 bg-green-400 rounded-full opacity-15 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 2 }} />
+      <motion.div className="fixed top-60 left-1/2 w-8 h-8 bg-red-400 rounded-full opacity-10 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 0.5 }} />
+      <motion.div className="fixed bottom-60 right-1/3 w-14 h-14 bg-purple-400 rounded-full opacity-12 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 1.5 }} />
+      <motion.div className="fixed top-1/3 left-1/4 w-6 h-6 bg-pink-400 rounded-full opacity-8 z-0" variants={floatingVariants} animate="animate" transition={{ delay: 2.5 }} />
+      
+      {/* Animated geometric shapes */}
+      <motion.div 
+        className="fixed top-32 right-1/4 w-10 h-10 border-2 border-yellow-400 opacity-10 z-0" 
+        animate={{ rotate: 360 }} 
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
+      />
+      <motion.div 
+        className="fixed bottom-32 left-1/3 w-12 h-12 border-2 border-blue-400 opacity-8 z-0" 
+        animate={{ rotate: -360 }} 
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Top Navigation Bar */}
+      <motion.nav 
+        className="fixed top-0 left-0 right-0 z-40 bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="max-w-5xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <motion.div 
+              className="text-yellow-400 font-bold text-xl"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              RA
+            </motion.div>
+            <div className="hidden md:flex items-center space-x-8">
+              {sections.map(section => (
+                <motion.button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`text-sm font-medium transition-colors capitalize ${
+                    activeSection === section ? 'text-yellow-400' : 'text-gray-300 hover:text-white'
+                  }`}
+                  whileHover={{ y: -2 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {section}
+                </motion.button>
+              ))}
+            </div>
+            <motion.div 
+              className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center"
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <User size={16} className="text-gray-900" />
+            </motion.div>
+          </div>
+        </div>
+      </motion.nav>
 
       <motion.nav className="fixed top-1/2 right-4 md:right-8 transform -translate-y-1/2 z-50 bg-gray-800 bg-opacity-50 backdrop-blur-sm p-2 rounded-full hidden lg:block" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}>
         <ul className="space-y-4">
@@ -193,7 +251,7 @@ function App() {
       </motion.nav>
 
       {/* UPDATED: Simplified main container animation to a simple fade-in */}
-      <motion.div className="max-w-5xl mx-auto rounded-lg shadow-2xl overflow-hidden relative z-10" style={{ backgroundImage: 'url(/img2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }}>
+      <motion.div className="max-w-5xl mx-auto rounded-lg shadow-2xl overflow-hidden relative z-10 mt-20" style={{ backgroundImage: 'url(/img2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }}>
         <motion.div className="absolute -top-4 left-8 z-20" style={{ rotate: paperClipRotate }} whileHover={{ scale: 1.1, rotate: 20 }} transition={{ type: "spring", stiffness: 300 }}>
           <div className="w-16 h-20 bg-gradient-to-b from-gray-300 to-gray-400 rounded-t-full rounded-b-sm shadow-lg">
             <div className="w-12 h-16 bg-gradient-to-b from-gray-200 to-gray-300 rounded-t-full rounded-b-sm mx-auto mt-1"></div>
@@ -203,35 +261,64 @@ function App() {
 
         <motion.div id="home" className="relative bg-white/70 backdrop-blur-sm p-8 border-b-2 border-gray-100/50" variants={containerVariants} initial="hidden" animate="visible">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Photo section with staggered animations */}
-            <motion.div className="w-48 flex-shrink-0" initial={{ x: -200, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}>
-              <motion.div className="w-48 h-64 bg-yellow-400 rounded-lg overflow-hidden shadow-lg relative group" initial={{ scale: 0.8, rotate: -5 }} animate={{ scale: 1, rotate: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
+            {/* Mobile: Name comes first, Desktop: Photo first */}
+            <div className="lg:hidden order-1">
+              {/* Name slides in first on mobile */}
+              <motion.h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 flex overflow-hidden" initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
+                  {"Rishabh Agrawal".split("").map((char, index) => (
+                      <motion.span key={index} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 + index * 0.05 }}>
+                          {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                  ))}
+              </motion.h1>
+              {/* Bio slides in from right on mobile */}
+              <motion.p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed flex flex-wrap overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}>
+                  {"I break problems into smaller ones—and sometimes break production in the process (but I fix it faster!).".split(" ").map((word, index) => (
+                      <span key={index} className="flex mr-1.5">
+                          {word.split("").map((char, charIndex) => (
+                               <motion.span key={charIndex} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.3, delay: 1.2 + index * 0.1 + charIndex * 0.02 }}>
+                                  {char}
+                              </motion.span>
+                          ))}
+                      </span>
+                  ))}
+              </motion.p>
+            </div>
+
+            {/* Photo section with enhanced size and animations */}
+            <motion.div className="w-full md:w-64 lg:w-72 flex-shrink-0 order-2 lg:order-1" initial={{ x: -200, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}>
+              <motion.div className="w-full md:w-64 lg:w-72 h-80 md:h-80 lg:h-96 bg-yellow-400 rounded-lg overflow-hidden shadow-lg relative group mx-auto" initial={{ scale: 0.8, rotate: -5 }} animate={{ scale: 1, rotate: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
                 <img src="/cutu.jpg" alt="Rishabh Agrawal" className="w-full h-full object-cover" />
                 <motion.div className="absolute -top-2 -left-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 0.8, type: 'spring' }} />
                 <motion.div className="absolute -bottom-2 -right-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 0.9, type: 'spring' }} />
+                {/* Enhanced photo decorations */}
+                <motion.div className="absolute top-4 right-4 w-6 h-6 border-2 border-white/50 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }} />
+                <motion.div className="absolute bottom-4 left-4 w-4 h-4 bg-white/30 rounded-full" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
               </motion.div>
-              {/* My Story card slides from left after photo */}
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}>
+              {/* My Story card slides from left after photo - Enhanced size */}
+              <motion.div className="mt-6 p-6 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200 order-3" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}>
                 <div className="relative inline-block">
-                  <h3 className="text-2xl font-serif font-bold text-gray-800 mb-2 italic">My Story</h3>
+                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-800 mb-3 italic">My Story</h3>
                   <motion.div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 1.5 }} style={{ transformOrigin: 'left' }} />
                 </div>
-                <p className="text-base text-gray-700 leading-relaxed">From scribbling on notebooks to crafting pixel-perfect interfaces. My journey is fueled by a passion for turning complex problems into beautiful, intuitive designs.</p>
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed">From scribbling on notebooks to crafting pixel-perfect interfaces. My journey is fueled by a passion for turning complex problems into beautiful, intuitive designs.</p>
+                {/* Enhanced story decorations */}
+                <motion.div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400/20 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} />
               </motion.div>
             </motion.div>
 
             {/* Name and content section */}
-            <motion.div className="flex-1 flex flex-col">
-              {/* Name slides in after photo */}
-              <motion.h1 className="text-5xl font-bold text-gray-900 mb-2 flex overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}>
+            <motion.div className="flex-1 flex flex-col order-4 lg:order-2">
+              {/* Name slides in after photo - Hidden on mobile, shown on desktop */}
+              <motion.h1 className="hidden lg:flex text-5xl font-bold text-gray-900 mb-2 overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}>
                   {"Rishabh Agrawal".split("").map((char, index) => (
                       <motion.span key={index} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.9 + index * 0.05 }}>
                           {char === " " ? "\u00A0" : char}
                       </motion.span>
                   ))}
               </motion.h1>
-              {/* Bio slides in from right */}
-              <motion.p className="text-lg text-gray-600 mb-6 leading-relaxed flex flex-wrap overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 1.4 }}>
+              {/* Bio slides in from right - Hidden on mobile, shown on desktop */}
+              <motion.p className="hidden lg:flex text-lg text-gray-600 mb-6 leading-relaxed flex-wrap overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 1.4 }}>
                   {"I break problems into smaller ones—and sometimes break production in the process (but I fix it faster!).".split(" ").map((word, index) => (
                       <span key={index} className="flex mr-1.5">
                           {word.split("").map((char, charIndex) => (
@@ -243,7 +330,7 @@ function App() {
                   ))}
               </motion.p>
               
-              <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut", delay: 1.8 }}>
+              <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-0" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut", delay: 1.8 }}>
                 <motion.div className="space-y-2" variants={itemVariants}>
                   <motion.div className="flex items-center space-x-2" whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}><Calendar size={16} className="text-gray-600" /> <span className="text-gray-600">26th September 2004</span></motion.div>
                   <motion.div className="flex items-center space-x-2" whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}><Mail size={16} className="text-gray-600" /> <span className="text-gray-600">kumarvrishabh700@gmail.com</span></motion.div>
@@ -253,26 +340,30 @@ function App() {
               </motion.div>
 
               {/* Off the Clock card slides from left */}
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 2.2 }}>
-                <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 italic">Off the Clock</h3>
+              <motion.div className="mt-6 p-5 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200 relative overflow-hidden" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 2.2 }}>
+                <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-800 mb-4 italic">Off the Clock</h3>
                 <motion.div className="flex items-center justify-around">
                   {[{ icon: Coffee, text: "Fueling on coffee" }, { icon: Music, text: "Curating playlists" }, { icon: Gamepad2, text: "Exploring worlds" }].map((interest, index) => (
-                    <motion.div key={index} className="flex flex-col items-center gap-2 text-center text-gray-600" initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 2.4 + index * 0.1 }} whileHover={{ scale: 1.1, color: "#111827" }} transition={{ type: "spring", stiffness: 300 }}><interest.icon size={28} /> <span className="text-xs">{interest.text}</span></motion.div>
+                    <motion.div key={index} className="flex flex-col items-center gap-2 text-center text-gray-600" initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 2.4 + index * 0.1 }} whileHover={{ scale: 1.15, color: "#111827" }} transition={{ type: "spring", stiffness: 300 }}><interest.icon size={32} /> <span className="text-xs md:text-sm">{interest.text}</span></motion.div>
                   ))}
                 </motion.div>
+                {/* Enhanced card decorations */}
+                <motion.div className="absolute top-2 right-2 w-3 h-3 bg-yellow-400/30 rounded-full" animate={{ scale: [1, 1.5, 1] }} transition={{ duration: 3, repeat: Infinity }} />
               </motion.div>
 
               {/* Core Strengths card slides from right */}
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 2.6 }}>
+              <motion.div className="mt-6 p-5 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200 relative overflow-hidden" initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 2.6 }}>
                  <div className="relative inline-block">
-                  <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 italic">Core Strengths</h3>
+                  <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-800 mb-4 italic">Core Strengths</h3>
                   <motion.div className="absolute bottom-2 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 2.8 }} style={{ transformOrigin: 'left' }} />
                  </div>
                 <motion.ul className="space-y-3">
                   {[{ icon: Lightbulb, title: "Intuitive UI/UX", description: "Crafting user-centric and accessible interfaces.", color: "text-yellow-500" }, { icon: Rocket, title: "Dynamic Motion", description: "Bringing designs to life with meaningful animations.", color: "text-blue-500" }, { icon: Sparkles, title: "Polished Execution", description: "A keen eye for detail and pixel-perfect results.", color: "text-red-500" }].map((strength, index) => (
-                    <motion.li key={index} className="flex items-start gap-3" initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 3 + index * 0.1 }}><strength.icon size={20} className={`${strength.color} mt-1 flex-shrink-0`} /><div><h4 className="font-bold text-gray-800">{strength.title}</h4> <p className="text-sm text-gray-600">{strength.description}</p></div></motion.li>
+                    <motion.li key={index} className="flex items-start gap-3" initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 3 + index * 0.1 }}><strength.icon size={22} className={`${strength.color} mt-1 flex-shrink-0`} /><div><h4 className="font-bold text-gray-800 text-base md:text-lg">{strength.title}</h4> <p className="text-sm md:text-base text-gray-600">{strength.description}</p></div></motion.li>
                   ))}
                 </motion.ul>
+                {/* Enhanced card decorations */}
+                <motion.div className="absolute bottom-2 right-2 w-4 h-4 border border-yellow-400/30 rounded-full" animate={{ rotate: -360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }} />
               </motion.div>
 
               <motion.div className="mt-auto pt-6 text-right" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 3.5 }}>
