@@ -333,7 +333,7 @@ function App() {
                   <motion.div className="absolute w-2 h-2 bg-yellow-400 rounded-full" style={{ top: '10%', left: '20%' }} animate={{ y: [-5, 5, -5], opacity: [0.3, 1, 0.3] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
                   <motion.div className="absolute w-1 h-1 bg-blue-400 rounded-full" style={{ top: '80%', right: '25%' }} animate={{ y: [5, -5, 5], opacity: [0.5, 1, 0.5] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
                   <motion.div className="absolute w-1.5 h-1.5 bg-green-400 rounded-full" style={{ top: '30%', right: '15%' }} animate={{ y: [-3, 3, -3], opacity: [0.4, 1, 0.4] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} />
-              </div>
+              </motion.div>
             </motion.section>
 
             <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }}>
