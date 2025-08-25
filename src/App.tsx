@@ -112,6 +112,18 @@ function App() {
     visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
+  // UPDATED: Variants for the new slide-in effect
+  const slideInFromLeft = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeInOut" } }
+  };
+
+  const slideInFromRight = {
+    hidden: { x: 100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeInOut", delay: 0.2 } }
+  };
+
+
   const projectItemVariants = {
     hidden: { y: 50, opacity: 0, scale: 0.9 },
     visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } }
@@ -180,7 +192,8 @@ function App() {
         </ul>
       </motion.nav>
 
-      <motion.div className="max-w-5xl mx-auto rounded-lg shadow-2xl overflow-hidden relative z-10" style={{ backgroundImage: 'url(/img2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut" }}>
+      {/* UPDATED: Simplified main container animation to a simple fade-in */}
+      <motion.div className="max-w-5xl mx-auto rounded-lg shadow-2xl overflow-hidden relative z-10" style={{ backgroundImage: 'url(/img2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut" }}>
         <motion.div className="absolute -top-4 left-8 z-20" style={{ rotate: paperClipRotate }} whileHover={{ scale: 1.1, rotate: 20 }} transition={{ type: "spring", stiffness: 300 }}>
           <div className="w-16 h-20 bg-gradient-to-b from-gray-300 to-gray-400 rounded-t-full rounded-b-sm shadow-lg">
             <div className="w-12 h-16 bg-gradient-to-b from-gray-200 to-gray-300 rounded-t-full rounded-b-sm mx-auto mt-1"></div>
@@ -190,23 +203,26 @@ function App() {
 
         <motion.div id="home" className="relative bg-white/70 backdrop-blur-sm p-8 border-b-2 border-gray-100/50" variants={containerVariants} initial="hidden" animate="visible">
           <div className="flex flex-col lg:flex-row gap-8">
-            <div className="w-48 flex-shrink-0">
+            {/* UPDATED: Image block now slides in from the left */}
+            <motion.div className="w-48 flex-shrink-0" variants={slideInFromLeft}>
               <div className="w-48 h-64 bg-yellow-400 rounded-lg overflow-hidden shadow-lg relative group">
                 <img src="/cutu.jpg" alt="Rishabh Agrawal" className="w-full h-full object-cover" />
                 <motion.div className="absolute -top-2 -left-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 1, type: 'spring' }} />
                 <motion.div className="absolute -bottom-2 -right-2 w-10 h-5 bg-yellow-300/50 backdrop-blur-sm -rotate-45" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: -45 }} transition={{ delay: 1.1, type: 'spring' }} />
               </div>
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.6 }}>
+              {/* UPDATED: My Story card slides from left */}
+              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}>
                 <div className="relative inline-block">
                   <h3 className="text-2xl font-serif font-bold text-gray-800 mb-2 italic">My Story</h3>
                   <motion.div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 1 }} viewport={{ once: true }} style={{ transformOrigin: 'left' }} />
                 </div>
                 <p className="text-base text-gray-700 leading-relaxed">From scribbling on notebooks to crafting pixel-perfect interfaces. My journey is fueled by a passion for turning complex problems into beautiful, intuitive designs.</p>
               </motion.div>
-            </div>
+            </motion.div>
 
-            <motion.div className="flex-1 flex flex-col" variants={itemVariants}>
-              {/* UPDATED: Animated Name */}
+            {/* UPDATED: Text content block now slides in from the right */}
+            <motion.div className="flex-1 flex flex-col" variants={slideInFromRight}>
+              {/* Animated Name */}
               <motion.h1 className="text-5xl font-bold text-gray-900 mb-2 flex overflow-hidden" variants={textContainerVariant}>
                   {"Rishabh Agrawal".split("").map((char, index) => (
                       <motion.span key={index} variants={textChildVariant}>
@@ -214,7 +230,7 @@ function App() {
                       </motion.span>
                   ))}
               </motion.h1>
-              {/* UPDATED: Animated Bio */}
+              {/* Animated Bio */}
               <motion.p className="text-lg text-gray-600 mb-6 leading-relaxed flex flex-wrap overflow-hidden" variants={textContainerVariant} transition={{delayChildren: 1}}>
                   {"I break problems into smaller ones—and sometimes break production in the process (but I fix it faster!).".split(" ").map((word, index) => (
                       <span key={index} className="flex mr-1.5">
@@ -236,7 +252,8 @@ function App() {
                 <motion.div className="space-y-2" variants={itemVariants}><div className="flex items-center space-x-2"><MapPin size={16} className="text-gray-600" /> <span className="text-gray-600">LOC: Ghaziabad, India</span></div></motion.div>
               </motion.div>
 
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" variants={itemVariants}>
+              {/* UPDATED: Off the Clock card slides from right */}
+              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease: "easeInOut" }} viewport={{ once: true }}>
                 <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 italic">Off the Clock</h3>
                 <motion.div className="flex items-center justify-around" variants={containerVariants}>
                   {[{ icon: Coffee, text: "Fueling on coffee" }, { icon: Music, text: "Curating playlists" }, { icon: Gamepad2, text: "Exploring worlds" }].map((interest, index) => (
@@ -245,7 +262,8 @@ function App() {
                 </motion.div>
               </motion.div>
 
-              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" variants={itemVariants}>
+              {/* UPDATED: Core Strengths card slides from right */}
+              <motion.div className="mt-6 p-4 bg-yellow-50/80 backdrop-blur-sm rounded-lg border border-yellow-200" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }} viewport={{ once: true }}>
                  <div className="relative inline-block">
                   <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 italic">Core Strengths</h3>
                   <motion.div className="absolute bottom-2 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }} viewport={{ once: true }} style={{ transformOrigin: 'left' }} />
