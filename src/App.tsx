@@ -460,11 +460,7 @@ function App() {
             <div className="lg:hidden order-1">
               {/* Name slides in first on mobile */}
               <motion.h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 flex overflow-hidden" initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
-<<<<<<< HEAD
                   {"RISHABH AGRAWAL".split("").map((char, index) => (
-=======
-                  {"Rishabh Agrawal".split("").map((char, index) => (
->>>>>>> 78e991e85d6992e57a00603713ba09b7c5483801
                       <motion.span key={index} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 + index * 0.05 }}>
                           {char === " " ? "\u00A0" : char}
                       </motion.span>
@@ -553,11 +549,7 @@ function App() {
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-800 mb-3 italic">My Story</h3>
                   <motion.div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 1.5 }} style={{ transformOrigin: 'left' }} />
                 </div>
-<<<<<<< HEAD
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed">My story isn’t just about learning to code — it’s about learning to create. From breaking down complex problems to building seamless experiences, I thrive at the sweet spot between logic and creativity. Every project I take on is a step toward shaping a smarter, more connected digital world.</p>
-=======
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed">From scribbling on notebooks to crafting pixel-perfect interfaces. My journey is fueled by a passion for turning complex problems into beautiful, intuitive designs.</p>
->>>>>>> 78e991e85d6992e57a00603713ba09b7c5483801
                 
                 {/* Enhanced story decorations */}
                 <motion.div className="absolute -bottom-2 -right-2 w-6 h-6 bg-yellow-400/20 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} />
@@ -578,11 +570,7 @@ function App() {
             <motion.div className="flex-1 flex flex-col order-4 lg:order-2">
               {/* Name slides in after photo - Hidden on mobile, shown on desktop */}
               <motion.h1 className="hidden lg:flex text-5xl font-bold text-gray-900 mb-2 overflow-hidden" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}>
-<<<<<<< HEAD
                   {"RISHABH AGRAWAL".split("").map((char, index) => (
-=======
-                  {"Rishabh Agrawal".split("").map((char, index) => (
->>>>>>> 78e991e85d6992e57a00603713ba09b7c5483801
                       <motion.span key={index} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.9 + index * 0.05 }}>
                           {char === " " ? "\u00A0" : char}
                       </motion.span>
@@ -675,11 +663,7 @@ function App() {
                   <motion.div className="absolute bottom-2 left-0 w-full h-0.5 bg-yellow-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, ease: 'easeOut', delay: 2.8 }} style={{ transformOrigin: 'left' }} />
                  </div>
                 <motion.ul className="space-y-3">
-<<<<<<< HEAD
                   {[{ icon: Lightbulb, title: "Full-Stack Development", description: "Building scalable, secure, and high-performance web apps.", color: "text-yellow-500" }, { icon: Rocket, title: "Blockchain & Cloud", description: "Hands-on with Solidity, Ethereum, AWS, and CI/CD pipelines.", color: "text-blue-500" }, { icon: Sparkles, title: "Innovation & Problem-Solving", description: "ransforming complex problems into simple, impactful solutions.", color: "text-red-500" }].map((strength, index) => (
-=======
-                  {[{ icon: Lightbulb, title: "Intuitive UI/UX", description: "Crafting user-centric and accessible interfaces.", color: "text-yellow-500" }, { icon: Rocket, title: "Dynamic Motion", description: "Bringing designs to life with meaningful animations.", color: "text-blue-500" }, { icon: Sparkles, title: "Polished Execution", description: "A keen eye for detail and pixel-perfect results.", color: "text-red-500" }].map((strength, index) => (
->>>>>>> 78e991e85d6992e57a00603713ba09b7c5483801
                     <motion.li key={index} className="flex items-start gap-3" initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 3 + index * 0.1 }}><strength.icon size={22} className={`${strength.color} mt-1 flex-shrink-0`} /><div><h4 className="font-bold text-gray-800 text-base md:text-lg">{strength.title}</h4> <p className="text-sm md:text-base text-gray-600">{strength.description}</p></div></motion.li>
                   ))}
                 </motion.ul>
@@ -729,7 +713,7 @@ function App() {
             <motion.section id="education" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }}>
               <SectionHeader title="Education" />
               <motion.div className="space-y-6" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                {[{ period: "2023 - 2027", institution: "National Institute of Technology, Patna", degree: "B.tech", grade: "Mechanical Engineer", location: "Patna, India" }, { period: "2020 - 2022", institution: "Carmel School", degree: "Sr.Secondary School of Education", grade: "CBSE", location: "Mannargudi, Tamilnadu, India" }].map((edu, index) => (
+                {[{ period: "2023 - 2027", institution: "National Institute of Technology, Patna", degree: "B.tech", grade: "Mechanical Engineer", location: "Patna, India" }, { period: "2020 - 2022", institution: "Carmel School", degree: "Sr.Secondary School of Education", grade: "P 75 %", location: "Mannargudi, Tamilnadu, India" }].map((edu, index) => (
                   <motion.div key={index} className="border-l-4 border-yellow-400 pl-6 relative p-4 rounded-r-lg bg-white/50" variants={itemVariants} whileHover={{ x: 5, backgroundColor: "#ffffff" }} transition={{ type: "spring", stiffness: 300 }}>
                     <motion.div className="absolute -left-2 top-0 w-4 h-4 bg-yellow-400 rounded-full border-2 border-white" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} />
                     <div className="text-sm text-gray-600 mb-1">{edu.period}</div>
@@ -764,7 +748,7 @@ function App() {
                 <motion.svg className="absolute top-2 -right-10 w-16 h-12" viewBox="0 0 100 100" initial={{ opacity: 0, rotate: -180 }} whileInView={{ opacity: 1, rotate: 0 }} transition={{ delay: 0.5, duration: 0.8 }} viewport={{ once: true }}><motion.path d="M20 30 C 40 10, 60 60, 80 40 S 90 70, 70 80" stroke="#2dd4bf" strokeWidth="4" fill="transparent" initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} transition={{ duration: 2, ease: "easeInOut", delay: 0.8 }} viewport={{ once: true }} /></motion.svg>
               </SectionHeader>
               <motion.div className="grid grid-cols-3 gap-4" initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true }}>
-                {[{ name: "Ae", full: "React", color: "bg-blue-900", level: "95%" }, { name: "Pr", full: "Premiere Pro", color: "bg-purple-900", level: "90%" }, { name: "Ps", full: "Photoshop", color: "bg-blue-600", level: "85%" }, { name: "Ai", full: "Illustrator", color: "bg-orange-600", level: "90%" }, { name: "Xd", full: "Adobe XD", color: "bg-pink-600", level: "80%" }, { name: "Figma", full: "Figma", color: "bg-gray-800", level: "95%", icon: true }, { name: "Dn", full: "Dimension", color: "bg-green-600", level: "70%" }, { name: "M", full: "Maya", color: "bg-teal-600", level: "65%" }, { name: "", full: "", color: "bg-gray-200/50", level: "0%" }].map((skill, index) => (
+                {[{ name: "Ae", full: "After Effects", color: "bg-blue-900", level: "95%" }, { name: "Pr", full: "Premiere Pro", color: "bg-purple-900", level: "90%" }, { name: "Ps", full: "Photoshop", color: "bg-blue-600", level: "85%" }, { name: "Ai", full: "Illustrator", color: "bg-orange-600", level: "90%" }, { name: "Xd", full: "Adobe XD", color: "bg-pink-600", level: "80%" }, { name: "Figma", full: "Figma", color: "bg-gray-800", level: "95%", icon: true }, { name: "Dn", full: "Dimension", color: "bg-green-600", level: "70%" }, { name: "M", full: "Maya", color: "bg-teal-600", level: "65%" }, { name: "", full: "", color: "bg-gray-200/50", level: "0%" }].map((skill, index) => (
                   <motion.div key={index} className={`${skill.color} text-white p-4 rounded-lg shadow-lg overflow-hidden ${skill.name ? 'cursor-pointer' : ''} relative`} initial={{ y: 50, opacity: 0, rotate: Math.random() * 20 - 10 }} whileInView={{ y: 0, opacity: 1, rotate: 0 }} transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 200 }} whileHover={skill.name ? { scale: 1.1, y: -10, rotate: Math.random() * 10 - 5, boxShadow: "0 15px 35px rgba(0,0,0,0.4)", zIndex: 10 } : {}} viewport={{ once: true }}>
                     <motion.div className="relative z-10" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 300 }} viewport={{ once: true }}>{skill.icon ? (<><motion.div initial={{ rotate: -180 }} whileInView={{ rotate: 0 }} transition={{ delay: index * 0.1 + 0.5 }} viewport={{ once: true }}><Figma size={24} className="mx-auto mb-1" /></motion.div> <div className="text-xs">{skill.full}</div></>) : skill.name ? (<><motion.div className="text-2xl font-bold mb-1" initial={{ y: -20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: index * 0.1 + 0.4 }} viewport={{ once: true }}>{skill.name}</motion.div><motion.div className="text-xs" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: index * 0.1 + 0.6 }} viewport={{ once: true }}>{skill.full}</motion.div></>) : <div className="h-12"></div>}</motion.div>
                     {skill.name && (<div className="mt-2 h-2 bg-black bg-opacity-20 rounded-full overflow-hidden"><motion.div className="h-2 bg-yellow-400 rounded-full" initial={{ width: 0, x: -100 }} whileInView={{ width: skill.level, x: 0 }} transition={{ duration: 1.5, ease: 'easeOut', delay: index * 0.1 + 0.8 }} viewport={{ once: true }} /></div>)}
